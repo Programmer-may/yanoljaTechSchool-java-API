@@ -1,0 +1,20 @@
+{"books": [
+    {
+        "price": 12000,
+        "company": "교보",
+        "writer": "홍길동",
+        "title": "자바"
+    },
+    {
+        "price": 35000,
+        "company": "영풍",
+        "writer": "나길동",
+        "title": "파이썬"
+    },
+    {
+        "price": 36000,
+        "company": "한빛",
+        "writer": "다길동",
+        "title": "오라클"
+    }
+]}
