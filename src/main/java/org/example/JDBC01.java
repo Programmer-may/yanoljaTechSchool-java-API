@@ -5,6 +5,7 @@ package org.example;
 import com.mysql.cj.jdbc.Driver;
 
 import java.sql.*;
+// 자바에서 제공해주는 인터페이스를 사용하기 위해서 import 해줘야 한다.
 
 public class JDBC01 {
     public static void main(String[] args) {
@@ -35,6 +36,8 @@ public class JDBC01 {
             //컴파일러 시점에선 단순히 문자열로 인식한다.
             // 실행 시점에서 클래스 객체가 만들어진다.
             // 내부적으론 DriverManager driver = new com.mysql.cj.jdbc.Driver(); 로 된다.
+            //문자열을 객체로 생성
+            //자바기술 : reflection 기법 - 자바가 스프링 프레임 워크에서 자동으로 뭔가 해줄 수 있는 기법
 
             //DB 연결
             Connection con = DriverManager.getConnection(url, username, password);
@@ -42,6 +45,8 @@ public class JDBC01 {
 
             // 2. sql 문장 만들기
             String query = "insert into tblbook(title,company,writer,price) values('" + title + "','" + company + "','" + writer + "','" + price + "')";
+
+            // 3. sql 문장을 전송할 전송객체를 생성 - Statement
             Statement st = con.createStatement();
             int cnt = st.executeUpdate(query); // 성공한 행의 갯수가 넘어온다
             if (cnt > 0) {
@@ -51,8 +56,14 @@ public class JDBC01 {
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally { // finally는 예외와 상관없이 무조건 실행
+            // rs.close
+            // st.close
+            // conn.close
+            //역순으로 close 해줘야 한다.
         }
-
+        // db 프레임워크 까지 가면 우리가 할게 더 없어진다.
+        //대신 api와 api끼리 어떻게 상호작용하는지 알아야한다.
 
     }
 }
