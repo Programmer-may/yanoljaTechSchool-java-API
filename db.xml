@@ -1,0 +1,5 @@
+<queries>
+    <select id = "selectBooks">
+        SELECT * FROM tblbook
+    </select>
+</queries>
